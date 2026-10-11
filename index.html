@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover businesses across India with BIZORA.">
+    <title>BIZORA — Discover Indian Businesses</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #172033;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 20px 7%;
+            border-bottom: 1px solid #e8edf5;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: 800;
+            color: #101d3a;
+        }
+
+        .logo span {
+            color: #3478f6;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #526078;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .button {
+            display: inline-block;
+            background: #3478f6;
+            color: white;
+            padding: 12px 19px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .hero {
+            padding: 100px 7%;
+            text-align: center;
+            color: white;
+            background:
+                radial-gradient(circle at 85% 15%, #294777, transparent 35%),
+                #101d3a;
+        }
+
+        .tagline {
+            color: #8fb6ff;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            margin: 22px 0;
+            font-size: clamp(38px, 6vw, 65px);
+            line-height: 1.12;
+            letter-spacing: -2px;
+        }
+
+        h1 span {
+            color: #79a8ff;
+        }
+
+        .hero p.description {
+            max-width: 620px;
+            margin: 0 auto 30px;
+            color: #d1d9e8;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 8px;
+            max-width: 650px;
+            margin: auto;
+            padding: 7px;
+            background: white;
+            border-radius: 12px;
+        }
+
+        .search-box input {
+            flex: 1;
+            min-width: 0;
+            border: none;
+            outline: none;
+            padding: 14px;
+            font-size: 15px;
+        }
+
+        .search-box button {
+            border: none;
+            border-radius: 8px;
+            padding: 14px 24px;
+            background: #3478f6;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .section {
+            padding: 75px 7%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin: 0 auto 40px;
+            max-width: 650px;
+        }
+
+        .eyebrow {
+            color: #3478f6;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            color: #101d3a;
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.2;
+            margin: 12px 0;
+        }
+
+        .section-heading p:last-child {
+            color: #6a768b;
+        }
+.category-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .category-card {
+            padding: 25px 20px;
+            text-align: left;
+            border: 1px solid #e5eaf2;
+            border-radius: 14px;
+            background: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px #101d3a12;
+            border-color: #b8d0ff;
+        }
+
+        .category-icon {
+            font-size: 30px;
+        }
+
+        .category-card h3 {
+            color: #101d3a;
+            margin: 12px 0 5px;
+        }
+
+        .category-card p {
+            color: #6a768b;
+            font-size: 13px;
+        }
+
+        .businesses {
+            background: #f6f8fc;
+        }
+
+        .empty-state {
+            max-width: 900px;
+            margin: auto;
+            padding: 45px 20px;
+            text-align: center;
+            background: white;
+            border: 1px dashed #cbd5e4;
+            border-radius: 14px;
+        }
+
+        .empty-state p {
+            color: #6a768b;
+            margin-top: 8px;
+        }
+
+        .register-section {
+            margin: 65px 7%;
+            padding: 60px 25px;
+            text-align: center;
+            color: white;
+            background: #101d3a;
+            border-radius: 20px;
+        }
+
+        .register-section h2 {
+            color: white;
+        }
+
+        .register-section p.description {
+            max-width: 600px;
+            margin: 15px auto 25px;
+            color: #c6d0e1;
+        }
+
+        .footer {
+            padding: 40px 7%;
+            text-align: center;
+            border-top: 1px solid #e8edf5;
+        }
+
+        .footer p {
+            color: #6a768b;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        .footer .copyright {
+            margin-top: 22px;
+            font-size: 12px;
+        }
+
+        @media (max-width: 760px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding: 18px 5%;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .navbar .button {
+                padding: 10px 12px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 75px 5%;
+            }
+
+            h1 {
+                letter-spacing: -1px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-box input,
+            .search-box button {
+                width: 100%;
+            }
+
+            .section {
+                padding: 55px 5%;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .category-card {
+                padding: 18px 14px;
+            }
+
+            .register-section {
+                margin: 35px 5%;
+                padding: 40px 18px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="#home" class="logo">BIZORA<span>.</span></a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#businesses">Businesses</a>
+        </nav>
+
+        <a href="#register" class="button">Register Business</a>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <p class="tagline">INDIA'S BUSINESS DISCOVERY PLATFORM</p>
+
+            <h1>
+                Discover Businesses.<br>
+                <span>Build Connections.</span>
+            </h1>
+
+            <p class="description">
+                Explore businesses across India, discover services,
+                and help your business reach more people.
+            </p>
+
+            <form class="search-box" id="searchForm">
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Business name, category, or city"
+                    aria-label="Search businesses"
+                >
+                <button type="submit">Search</button>
+            </form>
+        </section>
+
+        <section class="section" id="categories">
+            <div class="section-heading">
+                <p class="eyebrow">EXPLORE BY CATEGORY</p>
+                <h2>Find the Right Business</h2>
+                <p>Explore industries and discover businesses across India.</p>
+            </div>
+
+            <div class="category-grid">
+                <button class="category-card" data-category="Education">
+                    <span class="category-icon">📚</span>
+                    <h3>Education</h3>
+                    <p>Schools, tutors and institutes</p>
+                </button>
+
+                <button class="category-card" data-category="Technology">
+                    <span class="category-icon">💻</span>
+                    <h3>Technology</h3>
+                    <p>IT and technology services</p>
+                </button>
+
+                <button class="category-card" data-category="Healthcare">
+                    <span class="category-icon">🏥</span>
+                    <h3>Healthcare</h3>
+                    <p>Clinics and healthcare providers</p>
+                </button>
+
+                <button class="category-card" data-category="Manufacturing">
+                    <span class="category-icon">🏭</span>
+                    <h3>Manufacturing</h3>
+                    <p>Manufacturers and suppliers</p>
+                </button>
+
+                <button class="category-card" data-category="Real Estate">
+                    <span class="category-icon">🏢</span>
+                    <h3>Real Estate</h3>
+                    <p>Property services</p>
+                </button>
+
+                <button class="category-card" data-category="Other">
+                    <span class="category-icon">🏪</span>
+                    <h3>Other Businesses</h3>
+                    <p>Explore more industries</p>
+                </button>
+            </div>
+        </section>
+<section class="section businesses" id="businesses">
+            <div class="section-heading">
+                <p class="eyebrow">BUSINESS DIRECTORY</p>
+                <h2>Explore Businesses</h2>
+                <p>Discover businesses registered on our platform.</p>
+            </div>
+
+            <div class="empty-state" id="businessList">
+                <h3>Business listings coming soon</h3>
+                <p>Approved business profiles will appear here.</p>
+            </div>
+        </section>
+
+        <section class="register-section" id="register">
+            <p class="eyebrow">GROW YOUR REACH</p>
+            <h2>Put Your Business on the Map.</h2>
+
+            <p class="description">
+                Register your business to request a listing
+                in our growing business directory.
+            </p>
+
+            <a href="#registerForm" class="button">Get Started</a>
+        </section>
+
+        <section class="section" id="registerForm">
+            <div class="section-heading">
+                <p class="eyebrow">JOIN THE DIRECTORY</p>
+                <h2>Business Registration</h2>
+                <p>
+                    Our registration form will be added in the next step.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="#home" class="logo">BIZORA<span>.</span></a>
+        <p>Connecting people with businesses across India.</p>
+        <p class="copyright">
+            &copy; 2026 BIZORA. All rights reserved.
+        </p>
+    </footer>
+
+    <script>
+        const searchForm = document.getElementById("searchForm");
+        const searchInput = document.getElementById("searchInput");
+
+        searchForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const query = searchInput.value.trim();
+
+            if (!query) {
+                alert("Please enter a business name, category, or city.");
+                return;
+            }
+
+            alert(
+                "The business search will be activated after we connect the database."
+            );
+        });
+
+        document.querySelectorAll(".category-card").forEach(function(card) {
+            card.addEventListener("click", function() {
+                searchInput.value = card.dataset.category;
+
+                document.getElementById("home").scrollIntoView({
+                    behavior: "smooth"
+                });
+
+                searchInput.focus();
+            });
+        });
+    </script>
+
+</body>
+</html>
